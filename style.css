@@ -1,0 +1,345 @@
+/* Estilos Generales para el Body */
+
+html, body {
+    overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
+    width: 100%; /* Asegura que no haya un ancho "extra" del body */
+}
+
+/* ... el resto de tu CSS ... */
+
+body {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    margin: 0;
+    /* IMAGEN DE ESCRITORIO POR DEFECTO para el fondo FIJO de TODO el body */
+    background-image: url('imagenes/portada.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Este es el efecto "attachment" para todo el scroll */
+    color: #333; /* Color de texto general para el resto del sitio */
+}
+
+/* --- ESTILOS DEL HEADER (Versión de ESCRITORIO por defecto) --- */
+header {
+    height: 50px; /* Altura del header */
+    background-color: #ffffff; /* ¡FONDO BLANCO PARA ESCRITORIO! */
+    color: #000000; /* ¡TEXTO NEGRO PARA ESCRITORIO! (afecta a los elementos que hereden) */
+    padding: 1rem 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* ¡El header SIEMPRE fijo! */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para despegarlo */
+}
+
+/* --- Estilos del Logo --- */
+.site-logo {
+    height: 40px; /* Ajustada para ser más razonable con el header de 50px */
+    width: auto;
+    max-width: 150px;
+    display: block;
+}
+
+/* --- Estilos del Menú Hamburguesa (Desktop - oculto por defecto) --- */
+.hamburger-menu {
+    display: none; /* Oculto por defecto en escritorio */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #000000; /* Barras negras para el fondo blanco del header */
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Estilos del Menú de Navegación (Desktop) --- */
+.nav-menu {
+    display: flex; /* Visible por defecto en escritorio */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu ul li {
+    margin: 0 15px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #000000; /* ¡ENLACES NEGROS PARA ESCRITORIO! */
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+    font-size: 1.1em;
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.nav-menu ul li a:hover {
+    color: #a0a0a0;
+}
+
+/* Subrayado animado al pasar el ratón */
+.nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #000000; /* Subrayado negro */
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-menu ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- CAPA DE IMAGEN DE FONDO FIJA (Ya no se usa, la imagen está en el body) --- */
+/* ELIMINADO:
+.hero-image-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('imagenes/portada.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+*/
+
+/* --- Estilos para la PRIMERA PANTALLA (solo imagen) --- */
+.hero-primera-pantalla {
+    width: 100vw;
+    height: 100vh; /* Ocupa exactamente toda la altura de la ventana */
+    /* No necesita background-image aquí, ya que está en el body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Si añades texto en esta sección y quieres que sea blanco */
+    color: white;
+    text-align: center;
+    position: relative;
+    /* background-color: rgba(0,0,0,0.3); /* Capa oscura semitransparente si quieres un texto más legible */
+}
+
+/* --- SECCIÓN DE PORTADA CON CONTENIDO Y FONDO BLANCO --- */
+.portada-seccion-blanca {
+    width: 100vw; /* 100% del ancho de la ventana */
+    min-height: 100vh; /* Mínimo 100% de la altura, se expandirá con el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* ¡Fondo blanco solicitado! */
+    padding: 50px 20px; /* Padding para el contenido dentro de la sección */
+    box-sizing: border-box;
+    z-index: 1; /* Asegura que esté por encima del background fixed del body */
+    position: relative; /* Necesario para que el z-index funcione correctamente */
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1); /* Una pequeña sombra arriba para dar efecto de "salir" */
+    margin-top: 0; /* Asegura que no haya margen superior por defecto */
+}
+
+.portada-contenido {
+    max-width: 700px;
+    padding: 30px;
+    color: #333;
+    text-align: center;
+}
+
+.portada-tagline {
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #333;
+}
+
+.portada-tagline .icon-bulb {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.portada-contenido h2 {
+    font-size: 3.2em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+.portada-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    opacity: 0.9;
+    color: #555;
+}
+
+/* --- Estilos para secciones principales (solo de ejemplo) --- */
+main {
+    padding: 2rem;
+    max-width: 960px;
+    margin: 2rem auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- Media Query para dispositivos móviles --- */
+@media (max-width: 768px) {
+    /* Estilos del HEADER en MÓVIL */
+    header {
+        height: 40px;
+        background-color: #ffffff; /* ¡FONDO BLANCO PARA EL HEADER EN MÓVIL! */
+        color: #000000; /* ¡TEXTO NEGRO PARA EL HEADER EN MÓVIL! */
+        padding: 1rem 20px;
+        justify-content: space-between;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Reducir tamaño del logo en móvil */
+    .site-logo {
+        height: 150px;
+        max-width: 150px;
+    }
+
+    /* Mostrar el botón de hamburguesa en móvil */
+    .hamburger-menu {
+        display: block;
+        /* El 'color: #fff;' que tenías aquí ya no es necesario, el 'background-color' de las barras lo controla. */
+    }
+
+    .hamburger-menu .bar {
+        background-color: #000000; /* ¡BARRAS NEGRAS PARA EL ICONO HAMBURGUESA! */
+    }
+
+    /* Ocultar el menú de navegación por defecto en móvil */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff; /* ¡FONDO BLANCO PARA EL MENÚ DESPLEGABLE EN MÓVIL! */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 1000;
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+        height: 0;
+    }
+
+    /* Mostrar el menú cuando tenga la clase 'active' */
+    .nav-menu.active {
+        display: flex;
+        height: auto;
+        max-height: 300px;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu ul li {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu ul li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-menu ul li a {
+        color: #000000; /* ¡LETRAS NEGRAS PARA LOS ENLACES DEL MENÚ MÓVIL! */
+        padding: 15px 20px;
+        display: block;
+        font-size: 1.1em;
+        text-align: left;
+        font-weight: normal;
+    }
+
+    /* Efecto al pasar el ratón en móvil (si se soporta, ej: tablets) */
+    .nav-menu ul li a:hover {
+        background-color: #f0f0f0;
+        color: #000000; /* ¡LETRAS NEGRAS AL PASAR EL RATÓN! */
+    }
+
+    /* Ocultar el subrayado animado en móvil */
+    .nav-menu ul li a::after {
+        display: none;
+    }
+
+    /* Animación del icono de hamburguesa a cruz */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Adaptaciones para las secciones de portada en móvil */
+    .hero-primera-pantalla {
+        height: 80vh;
+    }
+
+    .portada-seccion-blanca {
+        min-height: 85vh;
+        padding: 40px 20px;
+    }
+
+    .portada-contenido {
+        padding: 15px;
+    }
+
+    .portada-tagline {
+        font-size: 0.75em;
+        padding: 5px 10px;
+    }
+
+    .portada-contenido h2 {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+    }
+
+    .portada-description {
+        font-size: 0.85em;
+    }
+
+    /* IMAGEN DE FONDO PARA MÓVIL (DEBE SER LA ÚLTIMA REGLA DEL BODY DENTRO DE LA MEDIA QUERY) */
+    body {
+        background-image: url('imagenes/portada4.jpg'); /* IMAGEN MÁS PEQUEÑA PARA MÓVIL */
+        background-position: center;
+    }
+}
