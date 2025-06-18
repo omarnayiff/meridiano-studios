@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // --- Código existente para el menú hamburguesa ---
     const hamburgerBtn = document.querySelector('.hamburger-menu');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -17,4 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // --- CÓDIGO NUEVO PARA LAS TARJETAS DE VIDEO ---
+    const videoCards = document.querySelectorAll('.video-card');
+
+    videoCards.forEach(card => {
+        const video = card.querySelector('video');
+
+        card.addEventListener('mouseenter', () => {
+            if (video) {
+                video.play();
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (video) {
+                video.pause();
+                video.currentTime = 0; // Opcional: Reiniciar el video al inicio al salir
+            }
+        });
+    });
 });

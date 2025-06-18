@@ -1,17 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-
-
 /* Estilos Generales para el Body */
-
 html, body {
     overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
     width: 100%; /* Asegura que no haya un ancho "extra" del body */
 }
-
-/* ... el resto de tu CSS ... */
 
 body {
     font-family: 'Montserrat', 'Arial', sans-serif;
@@ -26,10 +19,10 @@ body {
 
 /* --- ESTILOS DEL HEADER (Versión de ESCRITORIO por defecto) --- */
 header {
-    height: 50px; /* Altura del header */
-    background-color: #ffffff; /* ¡FONDO BLANCO PARA ESCRITORIO! */
-    color: #000000; /* ¡TEXTO NEGRO PARA ESCRITORIO! (afecta a los elementos que hereden) */
-    padding: 1rem 20px;
+    height: 70px; /* Aumentamos la altura para un mejor centrado vertical */
+    background-color: #ffffff; /* ¡FONDO BLANCO POR DEFECTO! */
+    color: #000000; /* ¡TEXTO NEGRO POR DEFECTO! */
+    padding: 0 40px; /* Ajustamos el padding lateral para una mejor alineación */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,12 +31,22 @@ header {
     top: 0;
     left: 0;
     z-index: 1000; /* Asegura que esté por encima de todo */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para despegarlo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra inicial discreta */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Agregamos transición para el scroll effect */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
 }
+
+/* Estilos del Header al hacer SCROLL */
+header.scrolled {
+    background-color: rgba(230, 230, 230, 0.9); /* Gris muy discreto y semitransparente (90% opacidad) */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Sombra un poco más pronunciada al hacer scroll */
+    /* El color del texto no se cambia aquí, se mantiene #000000 (negro) */
+}
+
 
 /* --- Estilos del Logo --- */
 .site-logo {
-    height: 40px; /* Ajustada para ser más razonable con el header de 50px */
+    height: 120px; /* Ajustada para el header de 70px */
     width: auto;
     max-width: 150px;
     display: block;
@@ -63,10 +66,13 @@ header {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: #000000; /* Barras negras para el fondo blanco del header */
+    background-color: #000000; /* Barras negras SIEMPRE */
     margin: 5px auto;
     transition: all 0.3s ease-in-out;
 }
+
+/* NO necesitamos una regla .scrolled para .hamburger-menu .bar porque el color no cambia */
+
 
 /* --- Estilos del Menú de Navegación (Desktop) --- */
 .nav-menu {
@@ -87,7 +93,7 @@ header {
 
 .nav-menu ul li a {
     text-decoration: none;
-    color: #000000; /* ¡ENLACES NEGROS PARA ESCRITORIO! */
+    color: #000000; /* ¡ENLACES NEGROS SIEMPRE! */
     font-weight: bold;
     padding: 5px 0;
     transition: color 0.3s ease-in-out;
@@ -97,7 +103,7 @@ header {
 
 /* Efecto al pasar el ratón (Hover) */
 .nav-menu ul li a:hover {
-    color: #a0a0a0;
+    color: #a0a0a0; /* Gris claro al hacer hover */
 }
 
 /* Subrayado animado al pasar el ratón */
@@ -106,32 +112,22 @@ header {
     position: absolute;
     width: 0;
     height: 2px;
-    background: #000000; /* Subrayado negro */
+    background: #000000; /* Subrayado negro SIEMPRE */
     left: 50%;
     bottom: -5px;
     transform: translateX(-50%);
     transition: width 0.3s ease-in-out;
 }
 
+/* NO necesitamos una regla .scrolled para .nav-menu ul li a::after porque el color no cambia */
+
 .nav-menu ul li a:hover::after {
     width: 100%;
 }
 
 /* --- CAPA DE IMAGEN DE FONDO FIJA (Ya no se usa, la imagen está en el body) --- */
-/* ELIMINADO:
-.hero-image-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('imagenes/portada.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-}
-*/
+/* (Mantenido como comentario según tu solicitud) */
+
 
 /* --- Estilos para la PRIMERA PANTALLA (solo imagen) --- */
 .hero-primera-pantalla {
@@ -220,28 +216,27 @@ main {
 @media (max-width: 768px) {
     /* Estilos del HEADER en MÓVIL */
     header {
-        height: 40px;
-        background-color: #ffffff; /* ¡FONDO BLANCO PARA EL HEADER EN MÓVIL! */
-        color: #000000; /* ¡TEXTO NEGRO PARA EL HEADER EN MÓVIL! */
-        padding: 1rem 20px;
+        height: 60px; /* Ajustamos la altura para móvil */
+        background-color: #ffffff; /* Fondo blanco para el header en móvil SIEMPRE */
+        color: #000000; /* Texto negro para el header en móvil SIEMPRE */
+        padding: 0 20px; /* Ajustamos el padding para móviles */
         justify-content: space-between;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     /* Reducir tamaño del logo en móvil */
     .site-logo {
-        height: 150px;
+        height: 120px; /* Ajuste a un tamaño más pequeño y coherente para móvil */
         max-width: 150px;
     }
 
     /* Mostrar el botón de hamburguesa en móvil */
     .hamburger-menu {
         display: block;
-        /* El 'color: #fff;' que tenías aquí ya no es necesario, el 'background-color' de las barras lo controla. */
     }
 
     .hamburger-menu .bar {
-        background-color: #000000; /* ¡BARRAS NEGRAS PARA EL ICONO HAMBURGUESA! */
+        background-color: #000000; /* Barras negras para el icono hamburguesa en móvil */
     }
 
     /* Ocultar el menú de navegación por defecto en móvil */
@@ -347,5 +342,647 @@ main {
     body {
         background-image: url('imagenes/portada4.jpg'); /* IMAGEN MÁS PEQUEÑA PARA MÓVIL */
         background-position: center;
+    }
+}
+
+
+
+
+
+/* --- SECCIÓN DE CARDS EXPANSIVAS --- */
+#servicios-cards {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+    display: flex; /* Mantenemos flex para que el contenido se gestione */
+    flex-direction: column; /* ¡CAMBIO CLAVE! Apila los elementos verticalmente */
+    justify-content: center; /* Centra el contenido verticalmente si es necesario */
+    align-items: center; /* ¡CAMBIO CLAVE! Centra los elementos horizontalmente */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* El .card-container también debe estar centrado si #servicios-cards tiene align-items: center; */
+.card-container {
+    display: flex;
+    gap: 15px; /* Reducimos el espacio entre tarjetas para que quepan 5 */
+    justify-content: center; /* Centra las tarjetas horizontalmente dentro de su propio contenedor */
+    max-width: 1400px; /* Mantener un ancho generoso para 5 cards expandidos */
+    margin: 0 auto; /* Asegura que el card-container se centre dentro del align-items de #servicios-cards */
+    flex-wrap: nowrap; /* Aseguramos que no haya salto de línea en escritorio */
+    /* overflow-x: auto; /* Mantén esto si deseas scroll horizontal si no caben perfectamente */
+    /* padding-bottom: 10px; */ /* Mantén esto para el scrollbar */
+}
+
+/* Estilos para el título de la sección de cards */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px; /* Espacio entre el título y las tarjetas */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.section-header h2 {
+    font-size: 2.8em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.section-header p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        margin-bottom: 30px;
+    }
+    .section-header h2 {
+        font-size: 2em;
+    }
+    .section-header p {
+        font-size: 0.95em;
+    }
+}
+
+.video-card {
+    position: relative;
+    width: 200px; /* HACEMOS LOS CARDS AÚN MÁS FINOS EN ESTADO NORMAL (antes 220px) */
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #FD9800;
+    /* Transición para todos los cambios */
+    transition: width 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Valor por defecto */
+}
+
+.video-card:hover {
+    width: 380px; /* Reducimos el ancho expandido (antes 420px), probar con 380px o 350px */
+    height: 400px; /* La altura se mantiene */
+    transform: translateY(-5px); /* Efecto de levantamiento */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Aseguramos que el card expandido esté por encima de los demás */
+}
+
+.video-card video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.video-card:hover video {
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+}
+
+/* --- Gestión de Overlays (sin cambios para mantenerlo visible y sin efectos) --- */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 80px, rgba(253, 152, 0, 0) 100%);
+    box-sizing: border-box;
+    color: white;
+    opacity: 1;
+    transition: background 0.3s ease;
+    z-index: 2; /* Por encima del video */
+}
+
+.video-card:hover .overlay {
+    
+    opacity: 1;
+}
+
+.video-card .overlay .description {
+    display: none;
+}
+
+.video-card:hover .overlay .description {
+    display: block;
+}
+
+.title {
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #ffffff;
+    padding: 10px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #000000;
+    font-weight: bold;
+    width: fit-content;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.description {
+    margin-bottom: 50px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+/* --- Media Query para dispositivos móviles y pantallas pequeñas --- */
+@media (max-width: 768px) {
+    #servicios-cards {
+        padding: 40px 10px;
+        min-height: auto;
+    }
+
+    .card-container {
+        flex-direction: column; /* Apila las tarjetas verticalmente */
+        align-items: center; /* Centra las tarjetas apiladas */
+        gap: 25px;
+        flex-wrap: wrap; /* Mantenemos flex-wrap para que se ajusten si hay demasiadas para el ancho */
+    }
+
+    .video-card {
+        width: 280px; /* Ancho base para móvil */
+        height: 350px;
+    }
+
+    .video-card:hover {
+        width: 320px; /* Ancho expandido en hover para móvil */
+        height: 350px;
+    }
+
+    .overlay {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 13px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 11px;
+    }
+}
+
+/* Media query para pantallas un poco más grandes que móvil pero no tan grandes como desktop */
+/* Usaremos esta media query para controlar el comportamiento de 5 cards en línea si es posible */
+@media (min-width: 769px) and (max-width: 1400px) {
+    .card-container {
+        gap: 10px; /* Reducimos aún más el gap para intentar que quepan los 5 */
+        /* Quitamos flex-wrap para que se fuercen a estar en una línea, si el ancho lo permite */
+        flex-wrap: nowrap; /* Aseguramos que no haya salto de línea */
+        overflow-x: auto; /* Agregamos scroll horizontal si no caben */
+        padding-bottom: 10px; /* Espacio para la barra de scroll si aparece */
+    }
+    .video-card {
+        width: 190px; /* Ancho base un poco más fino para pantallas medianas */
+        height: 350px;
+        flex-shrink: 0; /* Previene que los items se encojan si no hay suficiente espacio */
+    }
+    .video-card:hover {
+        width: 350px; /* Ancho expandido en hover para pantallas medianas */
+        height: 350px;
+    }
+    .subtitle {
+        font-size: 20px;
+    }
+}
+
+/* Media query para pantallas muy grandes, para asegurar que los 5 queden en una línea */
+@media (min-width: 1401px) {
+    .card-container {
+        max-width: 1500px; /* Ajusta según el tamaño de tu contenido y margen */
+        gap: 20px;
+        flex-wrap: nowrap; /* Aseguramos que no haya salto de línea */
+    }
+    .video-card {
+        width: 200px; /* Ancho base para pantallas muy grandes */
+        height: 400px;
+        flex-shrink: 0;
+    }
+    .video-card:hover {
+        width: 400px; /* Ancho expandido en hover para pantallas muy grandes */
+        height: 400px;
+    }
+}
+
+
+/* --- SECCIÓN PRINCIPAL --- */
+#mis-trabajos-web {
+    padding: 40px 20px;
+    background-color: #f8fafc;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* --- FILA HERO: TÍTULO + CARD DESTACADO --- */
+.hero-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    padding-right: 20px;
+}
+
+.subtitle {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #6366f1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.hero-title h1 {
+    font-size: 3.2em;
+    font-weight: 800;
+    color: #1a202c;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.featured-card {
+    max-width: 400px;
+    justify-self: end;
+}
+
+/* --- GRID ASIMÉTRICO SEGUNDA FILA --- */
+.asymmetric-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.large-card {
+    /* Card grande que ocupa más espacio */
+}
+
+.small-cards-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.small-card {
+    /* Cards pequeños en columna */
+}
+
+/* --- FILA INFERIOR --- */
+.bottom-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+}
+
+.bottom-large {
+    /* Card mediano */
+}
+
+.bottom-small {
+    /* Card pequeño */
+}
+
+/* --- ESTILOS BASE DE CARDS --- */
+.trabajo-card-wrapper {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.trabajo-card-wrapper:hover {
+    transform: translateY(-8px) rotateX(3deg);
+}
+
+/* Efecto de capas apiladas detrás */
+.trabajo-card-wrapper::before,
+.trabajo-card-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.trabajo-card-wrapper::before {
+    transform: translateX(6px) translateY(6px) rotateZ(-1.5deg);
+    background: linear-gradient(135deg, rgba(240,240,240,0.9), rgba(220,220,220,0.8));
+}
+
+.trabajo-card-wrapper::after {
+    transform: translateX(12px) translateY(12px) rotateZ(-3deg);
+    background: linear-gradient(135deg, rgba(200,200,200,0.8), rgba(180,180,180,0.7));
+}
+
+.trabajo-card-wrapper:hover::before {
+    transform: translateX(3px) translateY(3px) rotateZ(-0.8deg);
+}
+
+.trabajo-card-wrapper:hover::after {
+    transform: translateX(6px) translateY(6px) rotateZ(-1.5deg);
+}
+
+/* Card principal */
+.trabajo-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255,255,255,0.8);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Área de imagen con gradientes vibrantes */
+.trabajo-imagen-background {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Diferentes alturas para diferentes tipos de cards */
+.featured-card .trabajo-imagen-background,
+.large-card .trabajo-imagen-background {
+    height: 180px;
+}
+
+.small-card .trabajo-imagen-background {
+    height: 120px;
+}
+
+.bottom-large .trabajo-imagen-background {
+    height: 150px;
+}
+
+.bottom-small .trabajo-imagen-background {
+    height: 140px;
+}
+
+.trabajo-imagen-background::before {
+}
+
+.trabajo-imagen-background img {
+    
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+/* Colores vibrantes para fondos */
+.bg-color-light-blue { 
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+}
+.bg-color-light-pink { 
+    background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%);
+}
+.bg-color-light-purple { 
+    background: linear-gradient(135deg, #ede9fe 0%, #e0e7ff 100%);
+}
+.bg-color-light-orange { 
+    background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%);
+}
+.bg-color-light-green { 
+    background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+}
+
+/* Contenido del card */
+.trabajo-contenido {
+    padding: 25px;
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.trabajo-contenido h3 {
+    font-size: 1.3em;
+    color: #1a202c;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.trabajo-contenido p {
+    font-size: 0.9em;
+    color: #4a5568;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* Tamaños específicos para diferentes cards */
+.featured-card .trabajo-contenido h3,
+.large-card .trabajo-contenido h3 {
+    font-size: 1.4em;
+}
+
+.small-card .trabajo-contenido h3 {
+    font-size: 1.1em;
+}
+
+.small-card .trabajo-contenido p {
+    font-size: 0.85em;
+}
+
+/* Botón con estilo moderno */
+.btn-ver-mas {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: #6366f1;
+    padding: 8px 0;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    align-self: flex-start;
+}
+
+.btn-ver-mas:hover {
+    background-color: #6366f1;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-ver-mas::after {
+    content: '→';
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+
+.btn-ver-mas:hover::after {
+    transform: translateX(2px);
+}
+
+/* Rotaciones sutiles para dinamismo */
+.trabajo-card-wrapper:nth-child(odd) {
+    transform: rotateZ(0.5deg);
+}
+
+.trabajo-card-wrapper:nth-child(even) {
+    transform: rotateZ(-0.5deg);
+}
+
+.trabajo-card-wrapper:hover:nth-child(odd) {
+    transform: translateY(-8px) rotateZ(1deg) rotateX(3deg);
+}
+
+.trabajo-card-wrapper:hover:nth-child(even) {
+    transform: translateY(-8px) rotateZ(-1deg) rotateX(3deg);
+}
+
+/* --- RESPONSIVE PARA MÓVIL --- */
+@media (max-width: 768px) {
+    #mis-trabajos-web {
+        padding: 20px 15px;
+        gap: 25px;
+    }
+
+    /* Hero row en móvil: stack vertical */
+    .hero-row {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .hero-title {
+        padding-right: 0;
+    }
+
+    .hero-title h1 {
+        font-size: 2.2em;
+    }
+
+    .featured-card {
+        max-width: 100%;
+        justify-self: center;
+    }
+
+    /* Grid asimétrico se convierte en stack */
+    .asymmetric-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .small-cards-column {
+        gap: 15px;
+    }
+
+    /* Fila inferior stack */
+    .bottom-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Ajustar alturas en móvil */
+    .trabajo-imagen-background {
+        height: 140px !important;
+    }
+
+    .small-card .trabajo-imagen-background {
+        height: 120px !important;
+    }
+
+    .trabajo-contenido {
+        padding: 20px;
+    }
+
+    /* Efectos más sutiles en móvil */
+    .trabajo-card-wrapper::before {
+        transform: translateX(4px) translateY(4px) rotateZ(-2deg);
+    }
+
+    .trabajo-card-wrapper::after {
+        transform: translateX(8px) translateY(8px) rotateZ(-4deg);
+    }
+
+    .trabajo-card-wrapper:hover {
+        transform: translateY(-5px) rotateX(2deg);
+    }
+
+    /* Animación de entrada escalonada */
+    .hero-row { animation: slideInUp 0.8s ease 0.1s both; }
+    .asymmetric-grid { animation: slideInUp 0.8s ease 0.3s both; }
+    .bottom-row { animation: slideInUp 0.8s ease 0.5s both; }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animaciones para desktop */
+@media (min-width: 769px) {
+    .hero-row { animation: fadeInScale 1s ease 0.1s both; }
+    .asymmetric-grid { animation: fadeInScale 1s ease 0.3s both; }
+    .bottom-row { animation: fadeInScale 1s ease 0.5s both; }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
