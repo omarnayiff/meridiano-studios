@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Proyecto Web</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +28,7 @@
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Servicios</a></li>
                 <li><a href="#">Contacto</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -115,7 +117,11 @@
     </div>
 </section>
 
-<section id="mis-trabajos-web">
+
+
+<!-- Versão desktop: GRID assimétrico -->
+<section id="mis-trabajos-web-grid">
+  <section id="mis-trabajos-web">
         <!-- Primera fila: Título + Card destacado -->
         <div class="hero-row">
             <div class="hero-title">
@@ -169,6 +175,7 @@
             </div>
         </div>
 
+        
         <!-- Tercera fila: Card mediano + Card pequeño -->
         <div class="bottom-row">
             <div class="trabajo-card-wrapper bottom-large">
@@ -197,13 +204,164 @@
                 </div>
             </div>
         </div>
-    </section>
-    
+
+        
+    </section> 
+</section>
+
+<!-- Versão mobile: CARROSSEL SWIPER -->
+<section id="mis-trabajos-web-swiper">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+
+      <!-- Card 1 -->
+      <div class="swiper-slide trabajo-card-wrapper featured-card">
+        <div class="trabajo-card">
+          <div class="trabajo-imagen-background bg-color-light-purple">
+            <img src="imagenes/foto-card1.jpeg">
+          </div>
+          <div class="trabajo-contenido">
+            <h3>Proyecto Web Destacado: E-commerce Premium</h3>
+            <p>Desarrollamos una plataforma de e-commerce de alto rendimiento con diseño vanguardista y funcionalidades personalizadas para maximizar las ventas.</p>
+            <a href="#" class="btn-ver-mas">Contratar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="swiper-slide trabajo-card-wrapper large-card">
+        <div class="trabajo-card">
+          <div class="trabajo-imagen-background bg-color-light-green">
+            <img src="imagenes/foto-card2.jpg">
+          </div>
+          <div class="trabajo-contenido">
+            <h3>Tiendas WooCommerce</h3>
+            <p>Soluciones de e-commerce escalables con la flexibilidad de WordPress.</p>
+            <a href="#" class="btn-ver-mas">Crear mi tienda</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="swiper-slide trabajo-card-wrapper small-card">
+        <div class="trabajo-card">
+          <div class="trabajo-imagen-background bg-color-light-pink">
+            <img src="imagenes/foto-card3.jpg">
+          </div>
+          <div class="trabajo-contenido">
+            <h3>Tiendas Shopify</h3>
+            <p>Plataformas de venta online optimizadas y fáciles de usar.</p>
+            <a href="#" class="btn-ver-mas">Crear mi tienda</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="swiper-slide trabajo-card-wrapper bottom-large">
+        <div class="trabajo-card">
+          <div class="trabajo-imagen-background bg-color-light-blue">
+            <img src="imagenes/foto-card5.jpg">
+          </div>
+          <div class="trabajo-contenido">
+            <h3>Dropshipping Sin Complicaciones</h3>
+            <p>Lanza tu tienda online sin gestionar inventario. Creamos la base para tu negocio flexible.</p>
+            <a href="#" class="btn-ver-mas">Crear mi Tienda</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="swiper-slide trabajo-card-wrapper bottom-small">
+        <div class="trabajo-card">
+          <div class="trabajo-imagen-background bg-color-light-orange">
+            <img src="imagenes/foto-card6.jpeg">
+          </div>
+          <div class="trabajo-contenido">
+            <h3>Portales Inmobiliarios de Éxito</h3>
+            <p>Diseñamos sitios web modernos y funcionales. Atrae clientes y gestiona propiedades con facilidad.</p>
+            <a href="#" class="btn-ver-mas">Crear mi sistema</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Landing Pages -->
+      <div class="swiper-slide trabajo-card-wrapper bottom-small">
+        <div class="trabajo-card">
+          <div class="trabajo-imagen-background bg-color-light-pink">
+            <img src="imagenes/foto-landingpage.jpg">
+          </div>
+          <div class="trabajo-contenido">
+            <h3>Landing Pages que Convierten</h3>
+            <p>Diseñamos páginas de aterrizaje persuasivas enfocadas en generar leads y aumentar tus conversiones.</p>
+            <a href="#" class="btn-ver-mas">Solicitar diseño</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+<section id="service-carousel">
+  <div class="section-header">
+    <h2>Servicios Especializados en Transformación Digital</h2>
+    <p>Ofrecemos soluciones avanzadas para impulsar tu negocio: agentes de inteligencia artificial, tiendas virtuales, dropshipping, landing pages, formularios personalizados, sitios inmobiliarios avanzados, y más.</p>
+  </div>
+  <!-- Primera fila del carrusel -->
+  <div class="carousel-row">
+    <div class="carousel-track">
+      <img src="imagenes/slide.jpg" alt="Agentes de IA">
+      <img src="imagenes/slide1.jpg" alt="Tiendas Virtuales">
+      <img src="imagenes/slide2.jpg" alt="Dropshipping">
+      <img src="imagenes/slide3.jpg" alt="Landing Pages">
+      <img src="imagenes/slode4.jpg" alt="Formularios Personalizados">
+      <img src="imagenes/inmobiliaria.jpg" alt="Sitios Inmobiliarios">
+      <img src="imagenes/personalizacion.jpg" alt="Personalizaciones Avanzadas">
+      <img src="imagenes/seo.jpg" alt="Optimización SEO">
+      <img src="imagenes/marketing.jpg" alt="Marketing Digital">
+      <img src="imagenes/reservas.jpg" alt="Sistemas de Reservas y Agendas">
+      <img src="imagenes/ux_ui.jpg" alt="Consultoría UX/UI">
+      <img src="imagenes/branding.jpg" alt="Branding y Diseño Gráfico">
+      <!-- Duplicación -->
+      <img src="imagenes/agente.jpg" alt="Agentes de IA">
+      <img src="imagenes/tienda.jpg" alt="Tiendas Virtuales">
+      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
+      <img src="imagenes/landing.jpg" alt="Landing Pages">
+    </div>
+  </div>
+  <!-- Segunda fila del carrusel -->
+  <div class="carousel-row reverse">
+    <div class="carousel-track">
+      <img src="imagenes/slide.jpg" alt="Agentes de IA">
+      <img src="imagenes/tienda.jpg" alt="Tiendas Virtuales">
+      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
+      <img src="imagenes/landing.jpg" alt="Landing Pages">
+      <img src="imagenes/formularios.jpg" alt="Formularios Personalizados">
+      <img src="imagenes/inmobiliaria.jpg" alt="Sitios Inmobiliarios">
+      <img src="imagenes/personalizacion.jpg" alt="Personalizaciones Avanzadas">
+      <img src="imagenes/inmobiliarias.jpg" alt="Sitios Inmobiliarios">
+      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
+      <img src="imagenes/landing_pages.jpg" alt="Landing Pages">
+      <img src="imagenes/formularios.jpg" alt="Formularios Personalizados">
+      <img src="imagenes/personalizacion.jpg" alt="Personalizaciones Avanzadas">
+      <!-- Duplicación -->
+      <img src="imagenes/agente.jpg" alt="Agentes de IA">
+      <img src="imagenes/tienda.jpg" alt="Tiendas Virtuales">
+      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
+    </div>
+  </div>
+</section>
+
+
 
     <footer>
         <p>&copy; 2025 Mi Proyecto Web. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // --- Código existente para el menú hamburguesa ---
     const hamburgerBtn = document.querySelector('.hamburger-menu');
@@ -39,3 +43,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+const swiper = new Swiper('.mySwiper', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 0,
+      depth: 150,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+
+  

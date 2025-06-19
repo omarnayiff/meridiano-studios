@@ -6,16 +6,20 @@ html, body {
     width: 100%; /* Asegura que no haya un ancho "extra" del body */
 }
 
+
 body {
-    font-family: 'Montserrat', 'Arial', sans-serif;
-    margin: 0;
-    /* IMAGEN DE ESCRITORIO POR DEFECTO para el fondo FIJO de TODO el body */
-    background-image: url('imagenes/portada.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Este es el efecto "attachment" para todo el scroll */
-    color: #333; /* Color de texto general para el resto del sitio */
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  margin: 0;
+  background-image: url('imagenes/portada.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #333;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+
+
 
 /* --- ESTILOS DEL HEADER (Versión de ESCRITORIO por defecto) --- */
 header {
@@ -415,7 +419,7 @@ main {
     height: 400px;
     overflow: hidden;
     border-radius: 10px;
-    background: #FD9800;
+    background: #000000;
     /* Transición para todos los cambios */
     transition: width 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
     cursor: pointer;
@@ -527,7 +531,7 @@ main {
     }
 
     .video-card:hover {
-        width: 320px; /* Ancho expandido en hover para móvil */
+        width: 400px; /* Ancho expandido en hover para móvil */
         height: 350px;
     }
 
@@ -986,3 +990,100 @@ main {
         transform: scale(1);
     }
 }
+
+/* Oculta carrossel no desktop */
+  #mis-trabajos-web-swiper {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    #mis-trabajos-web-grid {
+      display: none;
+    }
+    #mis-trabajos-web-swiper {
+      display: block;
+    }
+  }
+
+
+
+
+ /* --- SECCIÓN PRINCIPAL --- */
+#service-carousel {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 20px;
+    background-color: #f8fafc;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 1em;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* --- FILAS DEL CARRUSEL --- */
+.carousel-row {
+    width: 100%;
+    position: relative;
+    height: 320px; /* Altura de la fila */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content; /* para que el ancho sea total de las imágenes */
+    animation: scroll 40s linear infinite; /* velocidad más lenta */
+}
+
+.carousel-row.reverse .carousel-track {
+    animation: scroll 40s linear infinite reverse;
+}
+
+.carousel-track img {
+    width: 400px;
+    height: 300px;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- ANIMACIÓN --- */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50%)); /* mueve la mitad del contenido porque el contenido está duplicado */
+    }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .carousel-row {
+        height: 150px;
+    }
+
+    .carousel-track img {
+        width: 150px;
+    }
+}
+
+
+
+
+
