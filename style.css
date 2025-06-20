@@ -385,7 +385,7 @@ main {
 
     /* IMAGEN DE FONDO PARA MÓVIL (DEBE SER LA ÚLTIMA REGLA DEL BODY DENTRO DE LA MEDIA QUERY) */
     body {
-        background-image: url('imagenes/portada4.jpg'); /* IMAGEN MÁS PEQUEÑA PARA MÓVIL */
+        background-image: url('imagenes/portada-mobile.jpg'); /* IMAGEN MÁS PEQUEÑA PARA MÓVIL */
         background-position: center;
     }
 }
@@ -571,7 +571,7 @@ main {
     }
 
     .video-card:hover {
-        width: 400px; /* Ancho expandido en hover para móvil */
+        width: 350px; /* Ancho expandido en hover para móvil */
         height: 350px;
     }
 
