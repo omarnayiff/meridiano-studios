@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Proyecto Web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,25 +14,26 @@
 <body>
 
     <header>
-        <a href="#" class="logo-link">
-            <img src="imagenes/logo3.png" alt="Logo de Mi Sitio Web" class="site-logo">
-        </a>
-        
-        <button class="hamburger-menu" aria-label="Abrir menú">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
+  <a href="#inicio" class="logo-link">
+    <img src="imagenes/logo3.png" alt="Logo de Mi Sitio Web" class="site-logo">
+  </a>
 
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Contacto</a></li>
-                
-            </ul>
-        </nav>
-    </header>
+  <button class="hamburger-menu" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios-cards">Servicios</a></li>
+      <li><a href="#mis-trabajos-web">Proyectos</a></li>
+      <li><a href="#service-carousel">Transformación Digital</a></li>
+      <li><a href="#contacto" class="boton-contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
 
     <section class="hero-primera-pantalla">
         </section>
@@ -181,7 +183,7 @@
             <div class="trabajo-card-wrapper bottom-large">
                 <div class="trabajo-card">
                     <div class="trabajo-imagen-background bg-color-light-blue">
-                        <img src="imagenes/foto-card5.jpg">
+                        <img src="imagenes/card55.jpg">
                     </div>
                     <div class="trabajo-contenido">
                         <h3>Dropshipping Sin Complicaciones</h3>
@@ -260,7 +262,7 @@
       <div class="swiper-slide trabajo-card-wrapper bottom-large">
         <div class="trabajo-card">
           <div class="trabajo-imagen-background bg-color-light-blue">
-            <img src="imagenes/foto-card5.jpg">
+            <img src="imagenes/card55.jpg">
           </div>
           <div class="trabajo-contenido">
             <h3>Dropshipping Sin Complicaciones</h3>
@@ -288,7 +290,7 @@
       <div class="swiper-slide trabajo-card-wrapper bottom-small">
         <div class="trabajo-card">
           <div class="trabajo-imagen-background bg-color-light-pink">
-            <img src="imagenes/foto-landingpage.jpg">
+            <img src="imagenes/card-landing.jpg">
           </div>
           <div class="trabajo-contenido">
             <h3>Landing Pages que Convierten</h3>
@@ -308,58 +310,82 @@
 <section id="service-carousel">
   <div class="section-header">
     <h2>Servicios Especializados en Transformación Digital</h2>
-    <p>Ofrecemos soluciones avanzadas para impulsar tu negocio: agentes de inteligencia artificial, tiendas virtuales, dropshipping, landing pages, formularios personalizados, sitios inmobiliarios avanzados, y más.</p>
+    <p>Ofrecemos soluciones avanzadas para impulsar tu negocio.</p>
   </div>
-  <!-- Primera fila del carrusel -->
+
+  <!-- Linha superior -->
   <div class="carousel-row">
     <div class="carousel-track">
-      <img src="imagenes/slide.jpg" alt="Agentes de IA">
-      <img src="imagenes/slide1.jpg" alt="Tiendas Virtuales">
-      <img src="imagenes/slide2.jpg" alt="Dropshipping">
-      <img src="imagenes/slide3.jpg" alt="Landing Pages">
-      <img src="imagenes/slode4.jpg" alt="Formularios Personalizados">
-      <img src="imagenes/inmobiliaria.jpg" alt="Sitios Inmobiliarios">
-      <img src="imagenes/personalizacion.jpg" alt="Personalizaciones Avanzadas">
-      <img src="imagenes/seo.jpg" alt="Optimización SEO">
-      <img src="imagenes/marketing.jpg" alt="Marketing Digital">
-      <img src="imagenes/reservas.jpg" alt="Sistemas de Reservas y Agendas">
-      <img src="imagenes/ux_ui.jpg" alt="Consultoría UX/UI">
-      <img src="imagenes/branding.jpg" alt="Branding y Diseño Gráfico">
-      <!-- Duplicación -->
-      <img src="imagenes/agente.jpg" alt="Agentes de IA">
-      <img src="imagenes/tienda.jpg" alt="Tiendas Virtuales">
-      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
-      <img src="imagenes/landing.jpg" alt="Landing Pages">
+      <img src="imagenes/carrosel.jpg" alt="Agentes de IA">
+      <img src="imagenes/carrosel1.jpg" alt="Tiendas Virtuales">
+      <img src="imagenes/carrosel2.jpg" alt="Dropshipping">
+      <img src="imagenes/carrosel3.jpg" alt="Landing Pages">
+      <img src="imagenes/carrosel4.jpg" alt="Formularios Personalizados">
     </div>
   </div>
-  <!-- Segunda fila del carrusel -->
+
+  <!-- Linha inferior -->
   <div class="carousel-row reverse">
     <div class="carousel-track">
-      <img src="imagenes/slide.jpg" alt="Agentes de IA">
-      <img src="imagenes/tienda.jpg" alt="Tiendas Virtuales">
-      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
-      <img src="imagenes/landing.jpg" alt="Landing Pages">
-      <img src="imagenes/formularios.jpg" alt="Formularios Personalizados">
-      <img src="imagenes/inmobiliaria.jpg" alt="Sitios Inmobiliarios">
-      <img src="imagenes/personalizacion.jpg" alt="Personalizaciones Avanzadas">
-      <img src="imagenes/inmobiliarias.jpg" alt="Sitios Inmobiliarios">
-      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
-      <img src="imagenes/landing_pages.jpg" alt="Landing Pages">
-      <img src="imagenes/formularios.jpg" alt="Formularios Personalizados">
-      <img src="imagenes/personalizacion.jpg" alt="Personalizaciones Avanzadas">
-      <!-- Duplicación -->
-      <img src="imagenes/agente.jpg" alt="Agentes de IA">
-      <img src="imagenes/tienda.jpg" alt="Tiendas Virtuales">
-      <img src="imagenes/dropshipping.jpg" alt="Dropshipping">
+      <img src="imagenes/carrosel5.jpg" alt="Sitios Inmobiliarios">
+      <img src="imagenes/carrosel6.jpg" alt="Personalizaciones Avanzadas">
+      <img src="imagenes/carrosel7.jpg" alt="SEO">
+      <img src="imagenes/carrosel8.jpg" alt="Branding">
+      <img src="imagenes/carrosel9.jpg" alt="UX/UI">
     </div>
+  </div>
+</section>
+
+<section id="contacto" class="portada-seccion-blanca">
+  <div class="portada-contenido">
+    <p class="portada-tagline">
+      <span class="icon-bulb">📬</span> ¿Tienes una idea? ¡Hablemos!
+    </p>
+    <h2>Contáctanos</h2>
+    <p class="portada-description">
+      Estamos listos para escuchar tus necesidades y ayudarte a crear algo extraordinario.
+    </p>
+    <a href="mailto:contacto@tusitio.com" class="btn-ver-mas">Escríbenos</a>
   </div>
 </section>
 
 
 
-    <footer>
-        <p>&copy; 2025 Mi Proyecto Web. Todos los derechos reservados.</p>
-    </footer>
+
+
+   <footer class="footer-modern">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Meridiano Studios</h2>
+      <p>Innovación, diseño y tecnología para tu presencia digital.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Explora</h4>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios-cards">Servicios</a></li>
+        <li><a href="#mis-trabajos-web">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Redes</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Meridiano Studios. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 /* Estilos Generales para el Body */
 html, body {
     overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
@@ -40,11 +45,9 @@ header {
     box-sizing: border-box; /* Para que el padding no afecte el ancho total */
 }
 
-/* Estilos del Header al hacer SCROLL */
 header.scrolled {
-    background-color: rgba(230, 230, 230, 0.9); /* Gris muy discreto y semitransparente (90% opacidad) */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Sombra un poco más pronunciada al hacer scroll */
-    /* El color del texto no se cambia aquí, se mantiene #000000 (negro) */
+  background: linear-gradient(to right, rgba(240, 240, 240, 0.95), rgba(255, 255, 255, 0.9));
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -98,7 +101,7 @@ header.scrolled {
 .nav-menu ul li a {
     text-decoration: none;
     color: #000000; /* ¡ENLACES NEGROS SIEMPRE! */
-    font-weight: bold;
+    
     padding: 5px 0;
     transition: color 0.3s ease-in-out;
     position: relative;
@@ -129,8 +132,31 @@ header.scrolled {
     width: 100%;
 }
 
-/* --- CAPA DE IMAGEN DE FONDO FIJA (Ya no se usa, la imagen está en el body) --- */
-/* (Mantenido como comentario según tu solicitud) */
+.nav-menu .boton-contacto {
+    text-decoration: none;
+  background: rgba(0, 0, 0, 0.7); /* Fundo preto semitransparente */
+  color: #fff !important;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu .boton-contacto:hover {
+    
+  background: rgba(255, 255, 255, 0.9);
+  color: #000 !important;
+  border-color: #000;
+}
+
+/* Remove la línea inferior del botón de contacto */
+.nav-menu .boton-contacto::after {
+  display: none !important;
+}
+
+
 
 
 /* --- Estilos para la PRIMERA PANTALLA (solo imagen) --- */
@@ -314,6 +340,21 @@ main {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+
+    .boton-contacto {
+  background-color: #000;
+  color: #fff !important;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.boton-contacto:hover {
+  background-color: #333;
+}
+
+
     /* Adaptaciones para las secciones de portada en móvil */
     .hero-primera-pantalla {
         height: 80vh;
@@ -355,6 +396,7 @@ main {
 
 /* --- SECCIÓN DE CARDS EXPANSIVAS --- */
 #servicios-cards {
+    overflow-x: hidden;
     padding: 80px 20px;
     background-color: #f9f9f9;
     display: flex; /* Mantenemos flex para que el contenido se gestione */
@@ -367,12 +409,13 @@ main {
 
 /* El .card-container también debe estar centrado si #servicios-cards tiene align-items: center; */
 .card-container {
+    overflow-x: hidden;
     display: flex;
     gap: 15px; /* Reducimos el espacio entre tarjetas para que quepan 5 */
     justify-content: center; /* Centra las tarjetas horizontalmente dentro de su propio contenedor */
     max-width: 1400px; /* Mantener un ancho generoso para 5 cards expandidos */
     margin: 0 auto; /* Asegura que el card-container se centre dentro del align-items de #servicios-cards */
-    flex-wrap: nowrap; /* Aseguramos que no haya salto de línea en escritorio */
+    flex-wrap: wrap; /* Aseguramos que no haya salto de línea en escritorio */
     /* overflow-x: auto; /* Mantén esto si deseas scroll horizontal si no caben perfectamente */
     /* padding-bottom: 10px; */ /* Mantén esto para el scrollbar */
 }
@@ -413,26 +456,32 @@ main {
     }
 }
 
+/* Estilo e animação moderna */
 .video-card {
     position: relative;
-    width: 200px; /* HACEMOS LOS CARDS AÚN MÁS FINOS EN ESTADO NORMAL (antes 220px) */
+    width: 200px;
     height: 400px;
     overflow: hidden;
-    border-radius: 10px;
-    background: #000000;
-    /* Transición para todos los cambios */
-    transition: width 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
+    border-radius: 15px;
+    background: #000;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    z-index: 1; /* Valor por defecto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(50px);
+    will-change: transform, opacity;
+    flex-shrink: 0; /* Garante que os cards não encolham */
+    margin: 5px; /* Adiciona espaço ao redor dos cards */
+}
+
+.video-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .video-card:hover {
-    width: 380px; /* Reducimos el ancho expandido (antes 420px), probar con 380px o 350px */
-    height: 400px; /* La altura se mantiene */
-    transform: translateY(-5px); /* Efecto de levantamiento */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    z-index: 10; /* Aseguramos que el card expandido esté por encima de los demás */
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .video-card video {
@@ -459,13 +508,11 @@ main {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 80px, rgba(253, 152, 0, 0) 100%);
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     box-sizing: border-box;
     color: white;
-    opacity: 1;
-    transition: background 0.3s ease;
-    z-index: 2; /* Por encima del video */
+    text-align: center;
 }
 
 .video-card:hover .overlay {
@@ -481,44 +528,37 @@ main {
     display: block;
 }
 
-.title {
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    background: #ffffff;
-    padding: 10px 10px;
+.overlay .title {
+    margin: 10px 0;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
+    font-weight: bold;
     font-size: 14px;
-    color: #000000;
-    font-weight: bold;
-    width: fit-content;
-    text-align: center;
 }
 
-.subtitle {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 25px;
+.overlay .subtitle {
+    font-size: 18px;
     font-weight: bold;
-    color: white;
 }
 
-.description {
-    margin-bottom: 50px;
-    margin-top: 10px;
+.overlay .description {
     font-size: 12px;
-    color: rgb(255, 255, 255);
-    text-align: center;
+    margin-top: 10px;
 }
 
 /* --- Media Query para dispositivos móviles y pantallas pequeñas --- */
 @media (max-width: 768px) {
     #servicios-cards {
+        overflow-y: hidden;
+        overflow-x: hidden;
         padding: 40px 10px;
         min-height: auto;
     }
 
     .card-container {
+        overflow-y: hidden;
+        overflow-x: hidden;
         flex-direction: column; /* Apila las tarjetas verticalmente */
         align-items: center; /* Centra las tarjetas apiladas */
         gap: 25px;
@@ -564,12 +604,12 @@ main {
     }
     .video-card {
         width: 190px; /* Ancho base un poco más fino para pantallas medianas */
-        height: 350px;
+        height: 80vh;
         flex-shrink: 0; /* Previene que los items se encojan si no hay suficiente espacio */
     }
     .video-card:hover {
         width: 350px; /* Ancho expandido en hover para pantallas medianas */
-        height: 350px;
+        height: 80vh;
     }
     .subtitle {
         font-size: 20px;
@@ -594,8 +634,61 @@ main {
     }
 }
 
+.video-card {
+    animation: cardEntrance 0.8s ease-out forwards;
+    opacity: 0;
+    
+    transform: translateY(80px) scale(0.8);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-/* --- SECCIÓN PRINCIPAL --- */
+.video-card.animate-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Delays escalonados para cada card */
+.video-card:nth-child(1).animate-in {
+    transition-delay: 0.1s;
+}
+
+.video-card:nth-child(2).animate-in {
+    transition-delay: 0.2s;
+}
+
+.video-card:nth-child(3).animate-in {
+    transition-delay: 0.3s;
+}
+
+.video-card:nth-child(4).animate-in {
+    transition-delay: 0.4s;
+}
+
+.video-card:nth-child(5).animate-in {
+    transition-delay: 0.5s;
+}
+
+.video-card:nth-child(1) { animation-delay: 0.1s; }
+.video-card:nth-child(2) { animation-delay: 0.2s; }
+.video-card:nth-child(3) { animation-delay: 0.3s; }
+.video-card:nth-child(4) { animation-delay: 0.4s; }
+.video-card:nth-child(5) { animation-delay: 0.5s; }
+
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/*SECCIÓN PRINCIPAL --- */
 #mis-trabajos-web {
     padding: 40px 20px;
     background-color: #f8fafc;
@@ -1003,85 +1096,186 @@ main {
     #mis-trabajos-web-swiper {
       display: block;
     }
-  }
+  }  
 
 
 
 
- /* --- SECCIÓN PRINCIPAL --- */
+
 #service-carousel {
-    width: 100%;
-    overflow: hidden;
-    padding: 40px 20px;
-    background-color: #f8fafc;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 20px;
+  padding: 40px 20px;
+  background: #111;
+  color: #fff;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  text-align: center;
+  overflow: hidden;
 }
 
 .section-header h2 {
-    font-size: 2.2em;
-    font-weight: 700;
-    color: #1a202c;
-    margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
 .section-header p {
-    font-size: 1em;
-    color: #4a5568;
-    line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+  color: #ccc;
 }
 
-/* --- FILAS DEL CARRUSEL --- */
 .carousel-row {
-    width: 100%;
-    position: relative;
-    height: 320px; /* Altura de la fila */
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+  overflow: hidden;
+  height: 300px;
+  margin-bottom: 30px;
+  position: relative;
 }
 
 .carousel-track {
-    display: flex;
-    width: max-content; /* para que el ancho sea total de las imágenes */
-    animation: scroll 40s linear infinite; /* velocidad más lenta */
+  display: flex;
+  width: max-content;
+  animation: slideBackForth 30s linear infinite alternate;
 }
 
 .carousel-row.reverse .carousel-track {
-    animation: scroll 40s linear infinite reverse;
+  animation-direction: alternate-reverse;
 }
 
 .carousel-track img {
-    width: 400px;
-    height: 300px;
-    margin-right: 20px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  height: 300px;
+  margin: 0 10px;
+  border-radius: 20px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-/* --- ANIMACIÓN --- */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-50%)); /* mueve la mitad del contenido porque el contenido está duplicado */
-    }
+.carousel-track img:hover {
+  transform: scale(1.05);
 }
 
-/* RESPONSIVO */
+/* Animação vai e volta */
+@keyframes slideBackForth {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* RESPONSIVO para telas pequenas */
 @media (max-width: 768px) {
-    .carousel-row {
-        height: 150px;
-    }
+  .carousel-row {
+    height: 200px;
+  }
 
-    .carousel-track img {
-        width: 150px;
-    }
+  .carousel-track img {
+    width: 250px;
+    height: 180px;
+    margin: 0 6px;
+    border-radius: 15px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .section-header p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
 }
+
+
+.footer-modern {
+  background: #111;
+  color: #eee;
+  padding: 60px 20px 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-logo h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-logo p {
+  max-width: 300px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer-links h4,
+.footer-social h4 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #fff;
+}
+
+.footer-social .social-icons a {
+  display: inline-block;
+  margin-right: 12px;
+  color: #ccc;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social .social-icons a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  color: #aaa;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-social .social-icons {
+    justify-content: center;
+  }
+}
+
 
 
 

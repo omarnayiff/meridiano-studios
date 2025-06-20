@@ -67,4 +67,28 @@ const swiper = new Swiper('.mySwiper', {
     },
   });
 
-  
+ 
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".video-card");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // Para não observar novamente
+            }
+        });
+    }, { threshold: 0.2 });
+
+    cards.forEach((card) => {
+        observer.observe(card);
+    });
+});
+
+
+
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
