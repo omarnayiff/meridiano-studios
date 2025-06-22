@@ -92,3 +92,69 @@ window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     header.classList.toggle('scrolled', window.scrollY > 20);
   });
+
+
+
+
+
+  const chatContainer = document.getElementById('chatContainer');
+    const chatBox = document.getElementById('chatBox');
+    const userInput = document.getElementById('userInput');
+
+    function toggleChat() {
+        if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+            chatContainer.style.display = 'flex';
+        } else {
+            chatContainer.style.display = 'none';
+        }
+    }
+
+    function sendMessage() {
+        const userMessage = userInput.value.trim();
+        if (!userMessage) return;
+
+        // Mostrar mensaje del usuario
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.className = 'message user';
+        userMessageDiv.textContent = userMessage;
+        chatBox.appendChild(userMessageDiv);
+        userInput.value = '';
+
+        // Respuesta del bot
+        setTimeout(() => {
+            const botMessageDiv = document.createElement('div');
+            botMessageDiv.className = 'message bot';
+            botMessageDiv.textContent = generateResponse(userMessage);
+            chatBox.appendChild(botMessageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 1000);
+    }
+
+    function sendOption(option) {
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.className = 'message user';
+        userMessageDiv.textContent = option;
+        chatBox.appendChild(userMessageDiv);
+
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.className = 'message bot';
+        botMessageDiv.textContent = generateResponse(option);
+        chatBox.appendChild(botMessageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function generateResponse(message) {
+        if (message.includes('comprar')) {
+            return 'Puedes comprar tu sitio web contactándonos directamente. Ofrecemos diseño personalizado y funcionalidades avanzadas.';
+        } else if (message.includes('cuesta')) {
+            return 'El costo de un sitio web depende de tus necesidades específicas. Contáctanos para una cotización personalizada.';
+        } else if (message.includes('asistente virtual')) {
+            return 'Nuestros asistentes virtuales incluyen respuestas automáticas, integración con WhatsApp y personalización según tu negocio.';
+        } else {
+            return 'No entendí tu mensaje. ¿Podrías ser más específico?';
+        }
+    }
+
+    function redirectToWhatsApp() {
+        window.open('https://wa.me/5548991850779?text=¡Hola! Estoy interesado en sus servicios de Meridiano Studios.', '_blank');
+    }

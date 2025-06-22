@@ -364,6 +364,28 @@
 
 
 
+<div class="chat-container" id="chatContainer">
+    <div class="header">
+        <h2>Asistente Meridiano Studios</h2>
+    </div>
+    <div class="chat-box" id="chatBox">
+        <div class="message bot">¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte hoy?</div>
+        <div class="options">
+            <button onclick="sendOption('¿Cómo puedo comprar mi sitio web?')">¿Cómo puedo comprar mi sitio web?</button>
+            <button onclick="sendOption('¿Cuánto cuesta un sitio web?')">¿Cuánto cuesta un sitio web?</button>
+            <button onclick="sendOption('¿Qué incluye un asistente virtual?')">¿Qué incluye un asistente virtual?</button>
+            <button onclick="redirectToWhatsApp()">Hablar por WhatsApp</button>
+        </div>
+    </div>
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Escribe tu mensaje...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<button class="chat-toggle-btn" id="chatToggleBtn" onclick="toggleChat()">
+    <i class="fas fa-comments"></i>
+</button>
 
 
 
