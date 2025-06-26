@@ -158,3 +158,42 @@ window.addEventListener('scroll', () => {
     function redirectToWhatsApp() {
         window.open('https://wa.me/5548991850779?text=¡Hola! Estoy interesado en sus servicios de Meridiano Studios.', '_blank');
     }
+
+
+
+    
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. Seleccionar todos los cards que queremos animar
+  const cards = document.querySelectorAll('.work-showcase-card');
+
+  // 2. Configurar el Intersection Observer
+  const observerOptions = {
+    root: null, // Observa la intersección con el viewport
+    rootMargin: '0px',
+    threshold: 0.1 // Se activa cuando el 10% del card es visible
+  };
+
+  // 3. Crear el observador
+  const observer = new IntersectionObserver((entries, observer) => {
+    // entries es una lista de los elementos que están siendo observados
+    entries.forEach(entry => {
+      // Si el elemento (entry) está ahora visible en la pantalla...
+      if (entry.isIntersecting) {
+        // ...añade la clase 'is-visible' para activar la animación CSS
+        entry.target.classList.add('is-visible');
+        
+        // Una vez que el card ha aparecido, dejamos de observarlo para mejorar el rendimiento
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // 4. Iniciar la observación para cada card
+  cards.forEach(card => {
+    observer.observe(card);
+  });
+
+});
+
+
