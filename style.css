@@ -611,236 +611,7 @@ a {
     }
 }
 
-/* Estilo e animação moderna */
-.video-card {
-    position: relative;
-    width: 200px;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 15px;
-    background: #000;
-    transition: all 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: translateY(50px);
-    will-change: transform, opacity;
-    flex-shrink: 0; /* Garante que os cards não encolham */
-    margin: 5px; /* Adiciona espaço ao redor dos cards */
-}
 
-.video-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.video-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.video-card video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    opacity: 1;
-    filter: brightness(1) blur(0px);
-    transition: opacity 0.3s ease, filter 0.3s ease;
-}
-
-.video-card:hover video {
-    opacity: 1;
-    filter: brightness(1) blur(0px);
-}
-
-/* --- Gestión de Overlays (sin cambios para mantenerlo visible y sin efectos) --- */
-.overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    box-sizing: border-box;
-    color: white;
-    text-align: center;
-}
-
-.video-card:hover .overlay {
-    
-    opacity: 1;
-}
-
-.video-card .overlay .description {
-    display: none;
-}
-
-.video-card:hover .overlay .description {
-    display: block;
-}
-
-.overlay .title {
-    margin: 10px 0;
-    padding: 5px 15px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.overlay .subtitle {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.overlay .description {
-    font-size: 12px;
-    margin-top: 10px;
-}
-
-/* --- Media Query para dispositivos móviles y pantallas pequeñas --- */
-@media (max-width: 768px) {
-    #servicios-cards {
-        overflow-y: hidden;
-        overflow-x: hidden;
-        padding: 40px 10px;
-        min-height: auto;
-    }
-
-    .card-container {
-        overflow-y: hidden;
-        overflow-x: hidden;
-        flex-direction: column; /* Apila las tarjetas verticalmente */
-        align-items: center; /* Centra las tarjetas apiladas */
-        gap: 25px;
-        flex-wrap: wrap; /* Mantenemos flex-wrap para que se ajusten si hay demasiadas para el ancho */
-    }
-
-    .video-card {
-        width: 280px; /* Ancho base para móvil */
-        height: 350px;
-    }
-
-    .video-card:hover {
-        width: 350px; /* Ancho expandido en hover para móvil */
-        height: 350px;
-    }
-
-    .overlay {
-        padding: 15px;
-    }
-
-    .title {
-        font-size: 13px;
-    }
-
-    .subtitle {
-        font-size: 20px;
-    }
-
-    .description {
-        font-size: 11px;
-    }
-}
-
-/* Media query para pantallas un poco más grandes que móvil pero no tan grandes como desktop */
-/* Usaremos esta media query para controlar el comportamiento de 5 cards en línea si es posible */
-@media (min-width: 769px) and (max-width: 1400px) {
-    .card-container {
-        gap: 10px; /* Reducimos aún más el gap para intentar que quepan los 5 */
-        /* Quitamos flex-wrap para que se fuercen a estar en una línea, si el ancho lo permite */
-        flex-wrap: nowrap; /* Aseguramos que no haya salto de línea */
-        overflow-x: auto; /* Agregamos scroll horizontal si no caben */
-        padding-bottom: 10px; /* Espacio para la barra de scroll si aparece */
-    }
-    .video-card {
-        width: 190px; /* Ancho base un poco más fino para pantallas medianas */
-        height: 80vh;
-        flex-shrink: 0; /* Previene que los items se encojan si no hay suficiente espacio */
-    }
-    .video-card:hover {
-        width: 350px; /* Ancho expandido en hover para pantallas medianas */
-        height: 80vh;
-    }
-    .subtitle {
-        font-size: 20px;
-    }
-}
-
-/* Media query para pantallas muy grandes, para asegurar que los 5 queden en una línea */
-@media (min-width: 1401px) {
-    .card-container {
-        max-width: 1500px; /* Ajusta según el tamaño de tu contenido y margen */
-        gap: 20px;
-        flex-wrap: nowrap; /* Aseguramos que no haya salto de línea */
-    }
-    .video-card {
-        width: 200px; /* Ancho base para pantallas muy grandes */
-        height: 400px;
-        flex-shrink: 0;
-    }
-    .video-card:hover {
-        width: 400px; /* Ancho expandido en hover para pantallas muy grandes */
-        height: 400px;
-    }
-}
-
-.video-card {
-    animation: cardEntrance 0.8s ease-out forwards;
-    opacity: 0;
-    
-    transform: translateY(80px) scale(0.8);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.video-card.animate-in {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* Delays escalonados para cada card */
-.video-card:nth-child(1).animate-in {
-    transition-delay: 0.1s;
-}
-
-.video-card:nth-child(2).animate-in {
-    transition-delay: 0.2s;
-}
-
-.video-card:nth-child(3).animate-in {
-    transition-delay: 0.3s;
-}
-
-.video-card:nth-child(4).animate-in {
-    transition-delay: 0.4s;
-}
-
-.video-card:nth-child(5).animate-in {
-    transition-delay: 0.5s;
-}
-
-.video-card:nth-child(1) { animation-delay: 0.1s; }
-.video-card:nth-child(2) { animation-delay: 0.2s; }
-.video-card:nth-child(3) { animation-delay: 0.3s; }
-.video-card:nth-child(4) { animation-delay: 0.4s; }
-.video-card:nth-child(5) { animation-delay: 0.5s; }
-
-
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 
 /*SECCIÓN PRINCIPAL --- */
@@ -1341,6 +1112,64 @@ a {
     padding: 0 10px;
   }
 }
+
+
+.seccion {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    background-color: white;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: #f7f7f7;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 15px;
+  background: #fff;
+}
+
+.faq-answer p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.arrow {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
 
 
 .footer-modern {

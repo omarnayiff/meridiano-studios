@@ -69,23 +69,6 @@ const swiper = new Swiper('.mySwiper', {
 
  
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".video-card");
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target); // Para não observar novamente
-            }
-        });
-    }, { threshold: 0.2 });
-
-    cards.forEach((card) => {
-        observer.observe(card);
-    });
-});
-
 
 
 window.addEventListener('scroll', () => {
@@ -195,5 +178,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const faqQuestions = document.querySelectorAll(".faq-question");
+
+  faqQuestions.forEach(question => {
+    question.addEventListener("click", () => {
+      const answer = question.nextElementSibling;
+      const arrow = question.querySelector(".arrow");
+
+      // Expand or collapse the current answer
+      if (answer.style.maxHeight) {
+        answer.style.maxHeight = null;
+        arrow.textContent = "+";
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        arrow.textContent = "-";
+      }
+    });
+  });
+});
+
 
 
