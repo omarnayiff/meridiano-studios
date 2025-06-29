@@ -84,34 +84,7 @@ window.addEventListener('scroll', () => {
     const chatBox = document.getElementById('chatBox');
     const userInput = document.getElementById('userInput');
 
-    function toggleChat() {
-        if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
-            chatContainer.style.display = 'flex';
-        } else {
-            chatContainer.style.display = 'none';
-        }
-    }
-
-    function sendMessage() {
-        const userMessage = userInput.value.trim();
-        if (!userMessage) return;
-
-        // Mostrar mensaje del usuario
-        const userMessageDiv = document.createElement('div');
-        userMessageDiv.className = 'message user';
-        userMessageDiv.textContent = userMessage;
-        chatBox.appendChild(userMessageDiv);
-        userInput.value = '';
-
-        // Respuesta del bot
-        setTimeout(() => {
-            const botMessageDiv = document.createElement('div');
-            botMessageDiv.className = 'message bot';
-            botMessageDiv.textContent = generateResponse(userMessage);
-            chatBox.appendChild(botMessageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }, 1000);
-    }
+    
 
     function sendOption(option) {
         const userMessageDiv = document.createElement('div');
@@ -199,6 +172,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
 
 
 
